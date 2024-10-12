@@ -1,0 +1,60 @@
+# Student Grades Management Program
+
+# Function to calculate the letter grade
+def calculate_letter_grade(average_grade):
+    if average_grade >= 90:
+        return 'A'
+    elif average_grade >= 80:
+        return 'B'
+    elif average_grade >= 70:
+        return 'C'
+    elif average_grade >= 60:
+        return 'D'
+    else:
+        return 'F'
+
+# Function to calculate GPA (on a 4.0 scale)
+def calculate_gpa(average_grade):
+    if average_grade >= 90:
+        return 4.0
+    elif average_grade >= 80:
+        return 3.0
+    elif average_grade >= 70:
+        return 2.0
+    elif average_grade >= 60:
+        return 1.0
+    else:
+        return 0.0
+
+# Function to input grades and calculate results
+def manage_grades():
+    subjects = {}
+    num_subjects = int(input("Enter the number of subjects/assignments: "))
+    
+    # Input grades for each subject
+    for i in range(num_subjects):
+        subject_name = input(f"Enter the name of subject/assignment {i + 1}: ")
+        grade = float(input(f"Enter the grade for {subject_name}: "))
+        subjects[subject_name] = grade
+    
+    # Calculate the average grade
+    total_grade = sum(subjects.values())
+    average_grade = total_grade / num_subjects
+    
+    # Calculate letter grade and GPA
+    letter_grade = calculate_letter_grade(average_grade)
+    gpa = calculate_gpa(average_grade)
+    
+    # Display the results
+    print("\n=== Grade Summary ===")
+    for subject, grade in subjects.items():
+        print(f"{subject}: {grade}")
+    
+    print(f"\nAverage Grade: {average_grade:.2f}")
+    print(f"Letter Grade: {letter_grade}")
+    print(f"GPA: {gpa:.2f}")
+
+# Main program execution
+if __name__ == "__main__":
+    print("Welcome to the Student Grades Management Program")
+    manage_grades()
